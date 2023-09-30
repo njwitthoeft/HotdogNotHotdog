@@ -12,10 +12,9 @@ from tqdm import tqdm
 
 from training.dataset import HotdogNotHotdogDataset
 from training.model import resnet18_N_class_head
-from training.transforms import transforms
+from training.transforms import augmentations, normalize
 
 # imagenet normalization
-normalize = Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
 
@@ -48,7 +47,7 @@ def finetune_resnet_18(
 
                 optimizer.zero_grad()
 
-                batch = transforms(batch)
+                batch = augmentations(batch)
 
                 out = model(batch)
 

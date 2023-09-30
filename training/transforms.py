@@ -3,7 +3,7 @@ from torchvision.transforms import v2
 
 normalize = v2.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
 
-transforms = v2.Compose(
+augmentations = v2.Compose(
     [
         # ...
         v2.RandomResizedCrop(
